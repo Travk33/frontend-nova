@@ -1,5 +1,4 @@
-![CI](https://github.com/mxhmoodem/frontend-nova/workflows/CI/badge.svg)
-
+[![CI/CD Pipeline](https://github.com/mxhmoodem/frontend-nova/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mxhmoodem/frontend-nova/actions/workflows/ci.yml)
 # MarketTrends Dashboard - Project Structure
 
 ## Overview
