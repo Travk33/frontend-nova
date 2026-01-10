@@ -16,7 +16,7 @@ export default function DashboardLayout() {
       <Sidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
 
       <div className="dashboard-layout__main">
-        <Header onMenuClick={toggleSidebar} />
+        <Header />
         <main className="dashboard-layout__content">
           <Outlet />
         </main>
