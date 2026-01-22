@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import type { InfoModalProps } from './InfoModal.types';
+import './InfoModal.css';
 
 export default function InfoModal({
   isOpen,
@@ -18,51 +19,49 @@ export default function InfoModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-200">
+    <div className="info-modal__overlay">
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="info-modal__backdrop"
         onClick={onClose}
         role="presentation"
       />
-      <div className="relative bg-card border border-border rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[85vh]">
+      <div className="info-modal">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-border flex items-center justify-between bg-secondary/30 backdrop-blur-sm">
-          <h3 className="font-bold text-xl flex items-center gap-2">
-            <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
-              <Info className="w-5 h-5" />
-            </div>
+        <div className="info-modal__header">
+          <h3 className="info-modal__title">
+            <span className="info-modal__title-icon">
+              <Info size={20} />
+            </span>
             {title}
           </h3>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-secondary rounded-full transition-colors"
+            className="info-modal__close-btn"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5" />
+            <X size={20} />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 p-6 overflow-y-auto space-y-8">
+        <div className="info-modal__body">
           {/* Section 1: What is this? */}
           <section>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-              <BookOpen className="w-4 h-4" /> What this screen is for
+            <h4 className="info-modal__section-title">
+              <BookOpen size={16} /> What this screen is for
             </h4>
-            <p className="text-base leading-relaxed text-foreground">
-              {content.whatFor}
-            </p>
+            <p className="info-modal__section-text">{content.whatFor}</p>
           </section>
 
           {/* Section 2: Capabilities */}
-          <section className="bg-secondary/30 p-5 rounded-xl border border-border">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-              <Zap className="w-4 h-4" /> What it does
+          <section className="info-modal__capabilities">
+            <h4 className="info-modal__section-title">
+              <Zap size={16} /> What it does
             </h4>
-            <ul className="space-y-2">
+            <ul className="info-modal__list">
               {content.whatItDoes.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                <li key={i} className="info-modal__list-item">
+                  <span className="info-modal__list-bullet" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -70,27 +69,22 @@ export default function InfoModal({
           </section>
 
           {/* Section 3: Usage */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="info-modal__grid">
             <section>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-                <Target className="w-4 h-4" /> When to use it
+              <h4 className="info-modal__section-title">
+                <Target size={16} /> When to use it
               </h4>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {content.whenToUse}
-              </p>
+              <p className="info-modal__relation-text">{content.whenToUse}</p>
             </section>
 
             <section>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-                <Lightbulb className="w-4 h-4" /> How to use it
+              <h4 className="info-modal__section-title">
+                <Lightbulb size={16} /> How to use it
               </h4>
-              <ul className="space-y-2">
+              <ul className="info-modal__list">
                 {content.howToUse.map((item, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-sm text-muted-foreground"
-                  >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-muted-foreground flex-shrink-0" />
+                  <li key={i} className="info-modal__list-item">
+                    <span className="info-modal__list-bullet info-modal__list-bullet--muted" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -99,33 +93,28 @@ export default function InfoModal({
           </div>
 
           {/* Section 4: Example */}
-          <section className="bg-primary/5 border border-primary/10 rounded-xl p-5">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-primary mb-2 flex items-center gap-2">
-              Example Scenario
-            </h4>
-            <p className="text-sm italic text-foreground/80">
+          <section className="info-modal__example">
+            <h4 className="info-modal__example-title">Example Scenario</h4>
+            <p className="info-modal__example-text">
               &ldquo;{content.example}&rdquo;
             </p>
           </section>
 
           {/* Section 5: Project Relation */}
-          <section className="border-t border-border pt-6">
-            <h4 className="text-sm font-bold text-foreground mb-2">
+          <section className="info-modal__relation">
+            <h4 className="info-modal__relation-title">
               How this relates to the project
             </h4>
-            <p className="text-sm text-muted-foreground">
+            <p className="info-modal__relation-text">
               {content.projectRelation}
             </p>
           </section>
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-border bg-secondary/10 flex justify-end">
-          <button
-            onClick={onClose}
-            className="px-6 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:opacity-90 transition-opacity flex items-center gap-2"
-          >
-            Got it <ArrowRight className="w-4 h-4" />
+        <div className="info-modal__footer">
+          <button onClick={onClose} className="info-modal__got-it-btn">
+            Got it <ArrowRight size={16} />
           </button>
         </div>
       </div>
