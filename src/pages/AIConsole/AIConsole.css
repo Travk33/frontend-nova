@@ -192,7 +192,7 @@
 
 .ai-search-container {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -221,18 +221,6 @@
 
 .ai-search-container .search-input__field {
   font-size: 1rem;
-}
-
-.ai-search-container .ai-query-search__submit-button {
-  background: linear-gradient(135deg, #ff9566 0%, #ff5e98 100%);
-  color: white;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
 }
 
 .ai-search-container .ai-query-search__submit-button svg {
