@@ -3,11 +3,14 @@ import { Upload } from 'lucide-react';
 import { InformationButton } from '../../components/common/InformationButton/InformationButton';
 import { Button } from '../../components/common/Button/Button';
 import { UploadDocumentModal } from '../../components/common/UploadDocumentModal/UploadDocumentModal';
+import { InfoModal } from '../../components/features/common/InfoModal';
+import { infoModalContent } from '../../constants/infoModalContent';
 import type { DocumentFormData } from '../../components/common/UploadDocumentModal/UploadDocumentModal.types';
 import './ContentHub.css';
 
 export default function ContentHub() {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   /**
    * Handle document upload submission
@@ -20,13 +23,22 @@ export default function ContentHub() {
 
   return (
     <div className="content-hub">
+      {/* Info Modal */}
+      <InfoModal
+        isOpen={showInfo}
+        onClose={() => setShowInfo(false)}
+        title="Content Hub"
+        content={infoModalContent.contentHub}
+      />
+
       <div className="content-hub__header">
         <div className="content-hub__header-left">
           <h2 className="content-hub__heading">
             Content Hub
             <InformationButton
-              tooltip="More information"
-              ariaLabel="Information"
+              tooltip="Learn about this page"
+              ariaLabel="Information about Content Hub"
+              onClick={() => setShowInfo(true)}
             />
           </h2>
           <p className="content-hub__subheading">
