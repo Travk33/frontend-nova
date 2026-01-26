@@ -262,36 +262,66 @@ export default function Storybook() {
             and specialized UploadDocumentModal.
           </p>
 
-          <div className="storybook__demo-item">
-            <h4>Base Modal</h4>
-            <p className="storybook__description">
-              Customizable modal with header, body, and optional footer.
-              Supports multiple sizes and keyboard navigation.
-            </p>
-            <div className="storybook__demo-row">
-              <Button
-                text="Open Basic Modal"
-                icon={<Info size={16} />}
-                variant="secondary"
-                onClick={() => setIsBasicModalOpen(true)}
-              />
+          <div className="storybook__modal-section">
+            {/* Base Modal Card */}
+            <div className="storybook__modal-card">
+              <div className="storybook__modal-card-header">
+                <div className="storybook__modal-card-icon">
+                  <Info size={20} />
+                </div>
+                <div className="storybook__modal-card-content">
+                  <h4 className="storybook__modal-card-title">Base Modal</h4>
+                  <p className="storybook__modal-card-description">
+                    Customizable modal with header, body, and optional footer.
+                    Supports multiple sizes and keyboard navigation.
+                  </p>
+                </div>
+              </div>
+              <div className="storybook__modal-card-features">
+                <span className="storybook__feature-tag">Focus Trapping</span>
+                <span className="storybook__feature-tag">ARIA Support</span>
+                <span className="storybook__feature-tag">3 Sizes</span>
+                <span className="storybook__feature-tag">ESC to Close</span>
+              </div>
+              <div className="storybook__modal-card-action">
+                <Button
+                  text="Open Basic Modal"
+                  icon={<Info size={16} />}
+                  variant="secondary"
+                  onClick={() => setIsBasicModalOpen(true)}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="storybook__demo-item">
-            <h4>Upload Document Modal</h4>
-            <p className="storybook__description">
-              Specialized modal for document uploads with drag-and-drop, file
-              validation, and metadata form fields. Accepts PDF, DOCX, PPT,
-              XLSX, and images.
-            </p>
-            <div className="storybook__demo-row">
-              <Button
-                text="Upload Document"
-                icon={<Upload size={16} />}
-                variant="primary"
-                onClick={() => setIsUploadModalOpen(true)}
-              />
+            {/* Upload Document Modal Card */}
+            <div className="storybook__modal-card">
+              <div className="storybook__modal-card-header">
+                <div className="storybook__modal-card-icon storybook__modal-card-icon--upload">
+                  <Upload size={20} />
+                </div>
+                <div className="storybook__modal-card-content">
+                  <h4 className="storybook__modal-card-title">Upload Document Modal</h4>
+                  <p className="storybook__modal-card-description">
+                    Specialized modal for document uploads with drag-and-drop,
+                    file validation, and metadata form fields.
+                  </p>
+                </div>
+              </div>
+              <div className="storybook__modal-card-features">
+                <span className="storybook__feature-tag">Drag & Drop</span>
+                <span className="storybook__feature-tag">PDF</span>
+                <span className="storybook__feature-tag">DOCX</span>
+                <span className="storybook__feature-tag">XLSX</span>
+                <span className="storybook__feature-tag">Images</span>
+              </div>
+              <div className="storybook__modal-card-action">
+                <Button
+                  text="Upload Document"
+                  icon={<Upload size={16} />}
+                  variant="primary"
+                  onClick={() => setIsUploadModalOpen(true)}
+                />
+              </div>
             </div>
           </div>
         </section>
