@@ -27,6 +27,8 @@ export { Modal } from './Modal/Modal';
 export type { ModalProps, ModalSize } from './Modal/Modal.types';
 export { SearchInput, default as SearchInputDefault } from './SearchInput';
 export type { SearchInputProps } from './SearchInput';
+export { StatCard } from './StatCard';
+export type { StatCardProps, StatCardVariant } from './StatCard';
 export { UploadDocumentModal } from './UploadDocumentModal/UploadDocumentModal';
 export type {
   UploadDocumentModalProps,
